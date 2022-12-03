@@ -6,6 +6,7 @@ package bchutil
 
 import (
 	"errors"
+	"strconv"
 
 	"fmt"
 
@@ -25,7 +26,7 @@ var (
 type UnsupportedWitnessVerError byte
 
 func (e UnsupportedWitnessVerError) Error() string {
-	return "unsupported witness version: " + string(e)
+	return fmt.Sprint("unsupported witness version: ", string(e))
 }
 
 // UnsupportedWitnessProgLenError describes an error where a segwit address
@@ -33,7 +34,7 @@ func (e UnsupportedWitnessVerError) Error() string {
 type UnsupportedWitnessProgLenError int
 
 func (e UnsupportedWitnessProgLenError) Error() string {
-	return "unsupported witness program length: " + string(e)
+	return fmt.Sprint("unsupported witness program length: ", strconv.Itoa(int(e)))
 }
 
 // encodeAddress returns a human-readable payment address given a ripemd160 hash
